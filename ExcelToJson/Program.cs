@@ -6,22 +6,30 @@ namespace ExcelToJson
     {
         static void Main(string[] args)
         {
-            JsonConvertHelper.ConfigureJsonInternal();
+            try
+            {
+                JsonConvertHelper.ConfigureJsonInternal();
 
-            ExcelToolConfig config = new ExcelToolConfig();
+                ExcelToolConfig config = new ExcelToolConfig();
 
-            string json = File.ReadAllText("./ExcelToolConfig.json");
-            config = JsonConvert.DeserializeObject<ExcelToolConfig>(json);
+                string json = File.ReadAllText("./ExcelToolConfig.json");
+                config = JsonConvert.DeserializeObject<ExcelToolConfig>(json);
 
-            ExcelTool excelTool = new ExcelTool(config);
+                ExcelTool excelTool = new ExcelTool(config);
 
-            string[] files = excelTool.ReadAllExcel();
+                string[] files = excelTool.ReadAllExcel();
 
-            excelTool.ExportToJsonFile(files);
+                excelTool.ExportToJsonFile(files);
 
-            excelTool.ExportToCSFile(files);
+                excelTool.ExportToCSFile(files);
 
-            Console.ReadKey();
+                Console.ReadKey();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.ReadKey();
+            }
         }
     }
 }

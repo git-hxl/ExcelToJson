@@ -12,6 +12,17 @@ namespace ExcelToJson
         public ExcelTool(ExcelToolConfig config)
         {
             _config = config;
+
+            if (!Directory.Exists(config.OutputCSDir))
+            {
+                Directory.CreateDirectory(config.OutputCSDir);
+            }
+
+            if (!Directory.Exists(config.OutputJsonDir))
+            {
+                Directory.CreateDirectory(config.OutputJsonDir);
+            }
+
         }
 
         /// <summary>
