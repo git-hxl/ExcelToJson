@@ -67,6 +67,8 @@ namespace ExcelToJson
                                 byte[] data = Encoding.UTF8.GetBytes(json);
                                 stream.Write(data, 0, data.Length);
                             }
+
+                            Console.WriteLine($"导出文件：{file} {table.TableName}");
                         }
                     }
                 }

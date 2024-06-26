@@ -127,8 +127,12 @@ namespace ExcelToJson
                     for (int j = 1; j <= cols; j++)
                     {
                         if (i == 1)
-                            dataTable.Columns.Add(worksheet.Cells[i, j].Value.ToString());
-
+                        {
+                            if (worksheet.Cells[i, j].Value != null)
+                                dataTable.Columns.Add(worksheet.Cells[i, j].Value.ToString());
+                            else
+                                dataTable.Columns.Add("");
+                        }
                         row[j - 1] = worksheet.Cells[i, j].Value;
                     }
                 }
@@ -172,10 +176,15 @@ namespace ExcelToJson
                     DataRow dataRow = newDataTable.Rows.Add();
                     for (int j = 0; j < dataTable.Columns.Count; j++)
                     {
+                        if (dataTable.Rows[typeIndex][j] == null || string.IsNullOrEmpty(dataTable.Rows[typeIndex][j].ToString()))
+                        {
+                            break;
+                        }
+
                         if (i == rowIndex)
                         {
-                            string columnName = dataTable.Rows[nameIndex][j].ToString();
                             string typeStr = dataTable.Rows[typeIndex][j].ToString();
+                            string columnName = dataTable.Rows[nameIndex][j].ToString();
 
                             Type type = typeof(string);
                             if (isConvertType)
@@ -186,7 +195,7 @@ namespace ExcelToJson
                             DataColumn dataColumn = new DataColumn(columnName, type);
                             newDataTable.Columns.Add(dataColumn);
                         }
-                        dataRow[j] = ConvertDataTableData(dataTable.Rows[i][j].ToString(), newDataTable.Columns[j].DataType);
+                        dataRow[j] = ConvertDataTableData(dataTable.Rows[i][j].ToString(), newDataTable.Columns[j].DataType, dataTable.TableName);
                     }
                 }
                 return newDataTable;
@@ -198,20 +207,40 @@ namespace ExcelToJson
             /// <param name="data"></param>
             /// <param name="type"></param>
             /// <returns></returns>
-            public static object ConvertDataTableData(string data, Type type)
+            public static object ConvertDataTableData(string data, Type type, string tableName)
             {
-                if (string.IsNullOrEmpty(data))
+                try
                 {
-                    return type.IsValueType ? Activator.CreateInstance(type) : null;
+                    if (string.IsNullOrEmpty(data))
+                    {
+                        return type.IsValueType ? Activator.CreateInstance(type) : null;
+                    }
+                    else if (data.StartsWith('[') && data.EndsWith(']'))
+                    {
+                        return JsonConvert.DeserializeObject(data, type);
+                    }
+                    else
+                    {
+                        return data;
+                    }
                 }
-                else if (data.Contains(","))
+                catch (Exception e)
                 {
-                    return JsonConvert.DeserializeObject(data, type);
+                    Console.WriteLine($"表 {tableName} 数据格式化出错：{data} 目标类型 {type}");
+                    Console.WriteLine(e.ToString());
+
+                    return null;
+
                 }
-                else
-                {
-                    return data;
-                }
+            }
+
+            public static bool CanParse(Type type, string str)
+            {
+                var tryParse = type.GetMethod("TryParse", new Type[] { typeof(string) });
+                if (tryParse == null)
+                    return false;
+
+                return true;
             }
 
             /// <summary>
@@ -223,6 +252,8 @@ namespace ExcelToJson
             {
                 switch (typeName.ToLower())
                 {
+                    case "uint":
+                        return typeof(uint);
                     case "int":
                         return typeof(int);
                     case "long":

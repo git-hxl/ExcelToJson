@@ -6,8 +6,8 @@ namespace ExcelToJson
     {
         static void Main(string[] args)
         {
-            try
-            {
+            //try
+            //{
                 JsonConvertHelper.ConfigureJsonInternal();
 
                 ExcelToolConfig config = new ExcelToolConfig();
@@ -24,12 +24,12 @@ namespace ExcelToJson
                 excelTool.ExportToCSFile(files);
 
                 Console.ReadKey();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                Console.ReadKey();
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(ex.Message);
+            //    Console.ReadKey();
+            //}
         }
     }
 }

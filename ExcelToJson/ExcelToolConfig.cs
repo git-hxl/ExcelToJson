@@ -3,7 +3,7 @@ namespace ExcelToJson
 {
     public class ExcelToolConfig
     {
-        public int StartHead { get; set; } = 3;
+        public int StartHead { get; set; }
 
         public string InputExcelDir { get; set; }
         public string OutputJsonDir { get; set; }

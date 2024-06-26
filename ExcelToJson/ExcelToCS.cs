@@ -26,6 +26,10 @@ namespace ExcelToJson
             for (int j = 0; j < dataTable.Columns.Count; j++)
             {
                 string columnName = dataTable.Rows[0][j].ToString();
+
+                if (string.IsNullOrEmpty(columnName))
+                    continue;
+
                 string typeStr = dataTable.Rows[1][j].ToString();
 
                 Type type = Utility.Excel.GetTypeByString(typeStr);
