@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.34928.147
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelToJson", "ExcelToJson\ExcelToJson.csproj", "{E2E455E3-022B-461C-B183-038D6F1A0C87}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Excel2Json", "Excel2Json\Excel2Json.csproj", "{21A6F06A-3021-4730-A3B1-FFA98719E96D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MainProgram", "MainProgram\MainProgram.csproj", "{9C3C7F4F-6389-488C-9882-C9722BD088CA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E2E455E3-022B-461C-B183-038D6F1A0C87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E2E455E3-022B-461C-B183-038D6F1A0C87}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E2E455E3-022B-461C-B183-038D6F1A0C87}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E2E455E3-022B-461C-B183-038D6F1A0C87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21A6F06A-3021-4730-A3B1-FFA98719E96D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21A6F06A-3021-4730-A3B1-FFA98719E96D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21A6F06A-3021-4730-A3B1-FFA98719E96D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21A6F06A-3021-4730-A3B1-FFA98719E96D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C3C7F4F-6389-488C-9882-C9722BD088CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C3C7F4F-6389-488C-9882-C9722BD088CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C3C7F4F-6389-488C-9882-C9722BD088CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C3C7F4F-6389-488C-9882-C9722BD088CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
