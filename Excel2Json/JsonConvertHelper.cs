@@ -14,6 +14,14 @@ namespace Excel2Json
 
     public static class JsonConvertHelper
     {
+
+#if UNITY_5_3_OR_NEWER
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+        public static void ApplyCustomConverters()
+        {
+            ConfigureJsonInternal();
+        }
+#endif
         public static void ConfigureJsonInternal()
         {
             JsonConvert.DefaultSettings = () =>
