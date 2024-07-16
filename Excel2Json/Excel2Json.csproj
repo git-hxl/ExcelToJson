@@ -55,7 +55,6 @@
     <Compile Include="ExcelHelper.cs" />
     <Compile Include="ExcelToCS.cs" />
     <Compile Include="ExcelTool.cs" />
-    <Compile Include="ExcelToolConfig.cs" />
     <Compile Include="JsonConvertHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
