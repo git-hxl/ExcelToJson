@@ -171,9 +171,20 @@ namespace Excel2Json
 
             for (int i = startIndex; i < dataTable.Rows.Count; i++)
             {
+                if (dataTable.Rows[i][0] == null || string.IsNullOrEmpty(dataTable.Rows[i][0].ToString()))
+                {
+                    break;
+                }
+
                 DataRow dataRow = newDataTable.Rows.Add();
+
                 for (int j = 0; j < dataTable.Columns.Count; j++)
                 {
+                    if (dataTable.Rows[nameIndex][j] == null || string.IsNullOrEmpty(dataTable.Rows[nameIndex][j].ToString()))
+                    {
+                        break;
+                    }
+
                     if (dataTable.Rows[typeIndex][j] == null || string.IsNullOrEmpty(dataTable.Rows[typeIndex][j].ToString()))
                     {
                         break;
@@ -190,9 +201,11 @@ namespace Excel2Json
                         DataColumn dataColumn = new DataColumn(columnName, type);
                         newDataTable.Columns.Add(dataColumn);
                     }
+
                     dataRow[j] = ConvertDataTableData(dataTable.Rows[i][j].ToString(), newDataTable.Columns[j].DataType, dataTable.TableName);
                 }
             }
+
             return newDataTable;
         }
 
@@ -234,6 +247,6 @@ namespace Excel2Json
             return true;
         }
 
-       
+
     }
 }
