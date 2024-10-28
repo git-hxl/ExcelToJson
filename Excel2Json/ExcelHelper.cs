@@ -196,7 +196,7 @@ namespace Excel2Json
                         string typeStr = dataTable.Rows[typeIndex][j].ToString();
 
                         Type type = typeof(string);
-                        type = JsonConvertHelper.GetTypeByString(typeStr);
+                        type = CusTomType.GetTypeByString(typeStr);
 
                         DataColumn dataColumn = new DataColumn(columnName, type);
                         newDataTable.Columns.Add(dataColumn);

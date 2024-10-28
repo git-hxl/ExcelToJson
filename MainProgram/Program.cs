@@ -15,17 +15,14 @@ namespace Excel2Json
 
             string json = File.ReadAllText("./ExcelToolConfig.json");
 
-            ExcelToolConfig excelToolConfig = JsonConvert.DeserializeObject<ExcelToolConfig>(json);
+            ExcelToolConfig config = JsonConvert.DeserializeObject<ExcelToolConfig>(json);
 
-
-            ExcelTool excelTool = new ExcelTool(excelToolConfig.StartHead, excelToolConfig.OutputJsonDir, excelToolConfig.OutputCSDir);
-
-            string[] files = excelTool.ReadExcelFiles(excelToolConfig.InputExcelDir);
+            string[] files = ExportTool.ReadExcelFiles(config.InputExcelDir);
 
             foreach (var file in files)
             {
-                excelTool.ExportToJson(file);
-                excelTool.ExportToCS(file);
+                ExportTool.ExportToJson(file,config.OutputJsonDir,config.StartHead);
+                ExportTool.ExportToCs(file,config.OutputCSDir);
 
                 Console.WriteLine(file);
             }
