@@ -1,6 +1,6 @@
 # ExcelToJson
 Unity ExcelToJson
-## 支持常用值类型 包括数组
+## 支持常用值类型 包括数组 Vector Color
 ## 支持自定义类型转化,默认读取第二行，或者采用自动识别根据内容自动转化
 
 
