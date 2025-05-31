@@ -107,6 +107,19 @@ namespace Excel2Json
                 case "string[]":
                     return typeof(string[]);
 
+                case "int[][]":
+                    return typeof(int[][]);
+                case "long[][]":
+                    return typeof(long[][]);
+                case "float[][]":
+                    return typeof(float[][]);
+                case "double[][]":
+                    return typeof(double[][]);
+                case "bool[][]":
+                    return typeof(bool[][]);
+                case "string[][]":
+                    return typeof(string[][]);
+
                 case "vector2[]":
                     return typeof(Vector2[]);
                 case "vector3[]":
