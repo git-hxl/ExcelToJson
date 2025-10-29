@@ -3,7 +3,9 @@ namespace Excel2Json
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
     using System;
-
+#if UNITY_5_3_OR_NEWER
+    using UnityEngine;
+#endif
     // Solutions to prevent serialization errors. Seen in https://forum.unity.com/threads/jsonserializationexception-self-referencing-loop-detected.1264253/
     // Newtonsoft struggles serializing structs like Vector3 because it has a property .normalized
     // that references Vector3, and thus entering a self-reference loop throwing circular reference error.

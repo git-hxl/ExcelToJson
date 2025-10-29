@@ -63,6 +63,8 @@ namespace Excel2Json
 
                     System.IO.StreamWriter writer = new System.IO.StreamWriter(outDir + "/" + fileName);
                     writer.WriteLine("// This code was automatically generated");
+                    writer.WriteLine("#pragma warning disable CS8618");
+
                     writer.WriteLine();
 
                     writer.WriteLine($"public class {table.TableName}:IConfig");

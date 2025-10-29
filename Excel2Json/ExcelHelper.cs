@@ -234,7 +234,7 @@ namespace Excel2Json
             }
             catch (Exception e)
             {
-                throw new Exception($"表 {tableName} 数据格式化出错：{data} 目标类型 {type}");
+                throw new Exception($"表 {tableName} 数据格式化出错：{data} 目标类型 {type} Error {e}");
             }
         }
 
